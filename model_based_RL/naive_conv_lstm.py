@@ -67,8 +67,6 @@ class FCLSTM(nn.Module):
         b, h, w = samples.shape
         h = torch.zeros(b, self.state_channels).cuda()
         c = torch.zeros(b, self.state_channels).cuda()
-        list_h = []
-        list_c = []
         for num in range(self.history_length):
             h, c, reward = self.lstm[num]((h, c), samples[num], dynamics)
 
